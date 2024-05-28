@@ -15,9 +15,7 @@ export const Home = () => {
   return (
     <section>
       <FormTotalFigures formState={formState} updateFormState={setFormState} />
-
       <FormSessionPlan formState={formState} updateFormState={setFormState} />
-
       <FormPoseType formState={formState} updateFormState={setFormState} />
     </section>
   )

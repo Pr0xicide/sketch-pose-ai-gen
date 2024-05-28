@@ -1,11 +1,13 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
 import { FORM_STATES } from '../../pages/Home'
 import { setTotalFigures } from '../../store/FigureReducer'
 
 const NUM_FIGURE_OPTIONS = [6, 9, 12]
+
+if (process.env.NODE_ENV === 'development') NUM_FIGURE_OPTIONS.splice(0, 0, 1)
 
 export const FormTotalFigures = ({ formState, updateFormState }) => {
   const dispatch = useDispatch()
