@@ -1,9 +1,12 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
-import { FORM_STATES } from '../../pages/Home'
+import { FORM_STATES } from '../../pages/Home/Home'
+import { useDispatch, useSelector } from 'react-redux'
+import { setPoseType, setPhotos, setSession } from '../../store/SessionReducer'
 
-const POSES_PROMPTS = [
+export const POSES_PROMPTS = [
   {
     name: 'standing',
   },
@@ -28,6 +31,10 @@ const POSES_PROMPTS = [
 ]
 
 export const FormPoseType = ({ formState, updateFormState }) => {
+  const navigate = useNavigate()
+  const { sessions } = useSelector((state) => state.figure)
+  const dispatch = useDispatch()
+
   const {
     register,
     handleSubmit,
@@ -40,7 +47,16 @@ export const FormPoseType = ({ formState, updateFormState }) => {
     updateFormState(FORM_STATES.SESSION_PLAN)
   }
 
-  const onFormSubmit = (data) => {}
+  const onFormSubmit = (data) => {
+    const { pose } = data
+    dispatch(
+      setSession({
+        pose: POSES_PROMPTS[pose],
+        sessions: sessions,
+      })
+    )
+    navigate('/session')
+  }
 
   return (
     <form
@@ -64,7 +80,7 @@ export const FormPoseType = ({ formState, updateFormState }) => {
           <input
             name="pose-type"
             type="radio"
-            value={pose.name}
+            value={index}
             {...register('pose', { required: true })}
           />
           &nbsp;{pose.name}

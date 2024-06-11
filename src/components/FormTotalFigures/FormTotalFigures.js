@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
-import { FORM_STATES } from '../../pages/Home'
+import { FORM_STATES } from '../../pages/Home/Home'
 import { setTotalFigures } from '../../store/FigureReducer'
 
 const NUM_FIGURE_OPTIONS = [6, 9, 12]

@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import { screen, fireEvent } from '@testing-library/react'
 
 import { render } from '../../_tests/testing-utils'
@@ -58,13 +59,23 @@ const preloadedState = {
 
 describe('component structure', () => {
   test('back button exists', () => {
-    render(<FormPoseType />, { preloadedState })
+    render(
+      <BrowserRouter>
+        <FormPoseType />
+      </BrowserRouter>,
+      { preloadedState }
+    )
     const el_back_btn = screen.getByRole('button', { name: /back/i })
     expect(el_back_btn).toBeInTheDocument()
   })
 
   test('submit button exists', () => {
-    render(<FormPoseType />, { preloadedState })
+    render(
+      <BrowserRouter>
+        <FormPoseType />
+      </BrowserRouter>,
+      { preloadedState }
+    )
     const el_submit_btn = screen.getByRole('button', { name: /start/i })
     expect(el_submit_btn).toBeInTheDocument()
   })
@@ -72,7 +83,12 @@ describe('component structure', () => {
 
 describe('form validation', () => {
   test('invalid input', () => {
-    render(<FormPoseType />, { preloadedState })
+    render(
+      <BrowserRouter>
+        <FormPoseType />
+      </BrowserRouter>,
+      { preloadedState }
+    )
     const el_submit_btn = screen.getByRole('button', { name: /start/i })
     const el_form_errors = screen.getByTestId('form-pose-type-error')
     fireEvent.click(el_submit_btn)

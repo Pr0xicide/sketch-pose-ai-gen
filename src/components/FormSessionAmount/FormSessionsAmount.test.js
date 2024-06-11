@@ -2,7 +2,7 @@ import React from 'react'
 import { screen, fireEvent, waitFor } from '@testing-library/react'
 
 import { render } from '../../_tests/testing-utils'
-import { SessionAmount } from './SessionAmount'
+import { FormSessionAmount } from './FormSessionAmount'
 
 const MILLISECONDS = 1000
 const MINUTES = MILLISECONDS * 60
@@ -62,25 +62,34 @@ describe('components exists', () => {
   const session_value = preloadedState.figure.sessions[type][session_type_index]
 
   test('session amount heading exists', () => {
-    render(<SessionAmount session={session_value} type={type} index={2} />, {
-      preloadedState,
-    })
+    render(
+      <FormSessionAmount session={session_value} type={type} index={2} />,
+      {
+        preloadedState,
+      }
+    )
     const heading = screen.getByRole('heading', { name: /60 seconds/i })
     expect(heading).toBeInTheDocument()
   })
 
   test('decrement button exists', () => {
-    render(<SessionAmount session={session_value} type={type} index={2} />, {
-      preloadedState,
-    })
+    render(
+      <FormSessionAmount session={session_value} type={type} index={2} />,
+      {
+        preloadedState,
+      }
+    )
     const button = screen.getByRole('button', { name: /-/i })
     expect(button).toBeInTheDocument()
   })
 
   test('increment button exists', () => {
-    render(<SessionAmount session={session_value} type={type} index={2} />, {
-      preloadedState,
-    })
+    render(
+      <FormSessionAmount session={session_value} type={type} index={2} />,
+      {
+        preloadedState,
+      }
+    )
     const button = screen.getByRole('button', { name: /\+/i })
     expect(button).toBeInTheDocument()
   })
@@ -141,9 +150,12 @@ describe('initial state', () => {
   const session_value = preloadedState.figure.sessions[type][session_type_index]
 
   test('correct amount value is displayed', () => {
-    render(<SessionAmount session={session_value} type={type} index={2} />, {
-      preloadedState,
-    })
+    render(
+      <FormSessionAmount session={session_value} type={type} index={2} />,
+      {
+        preloadedState,
+      }
+    )
     const input = screen.getByTestId('short-session-60').value
     expect(parseInt(input)).toBe(2)
   })
@@ -204,9 +216,12 @@ describe('user actions', () => {
   const session_value = preloadedState.figure.sessions[type][session_type_index]
 
   test('increments amount correctly', async () => {
-    render(<SessionAmount session={session_value} type={type} index={2} />, {
-      preloadedState,
-    })
+    render(
+      <FormSessionAmount session={session_value} type={type} index={2} />,
+      {
+        preloadedState,
+      }
+    )
     const btn_increment = screen.getByRole('button', { name: /\+/i })
     await fireEvent.click(btn_increment)
 

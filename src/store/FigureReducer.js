@@ -51,7 +51,12 @@ const initialState = {
   },
 }
 
-const getSessionTotals = (sessions) => {
+/**
+ * Calculates the total of sessions the user has filled out for their session.
+ * @param {object} sessions
+ * @returns {number} total number of selected sessions from the user
+ */
+const getTotalSelectedSessions = (sessions) => {
   let sum = 0
 
   sessions.short.forEach((session) => {
@@ -65,6 +70,44 @@ const getSessionTotals = (sessions) => {
   })
 
   return sum
+}
+
+/**
+ * Returns the session plan in milliseconds that the user has filled out.
+ *
+ * @param {object} sessions
+ * @returns {Array<number>} sorted array of milliseconds values for each session from shortest to longest
+ */
+export const getSessionPlan = (sessions) => {
+  const sessionPlan = []
+
+  sessions.short.forEach((session) => {
+    const { amount, duration } = session
+    if (amount > 0) {
+      for (let i = 0; i < amount; i++) {
+        sessionPlan.push(duration)
+      }
+    }
+  })
+
+  sessions.average.forEach((session) => {
+    const { amount, duration } = session
+    if (amount > 0) {
+      for (let i = 0; i < amount; i++) {
+        sessionPlan.push(duration)
+      }
+    }
+  })
+
+  sessions.long.forEach((session) => {
+    const { amount, duration } = session
+    if (amount > 0) {
+      for (let i = 0; i < amount; i++) {
+        sessionPlan.push(duration)
+      }
+    }
+  })
+  return sessionPlan
 }
 
 export const FigureReducer = createSlice({
@@ -102,7 +145,7 @@ export const FigureReducer = createSlice({
       }
 
       state.remainingFigures =
-        state.totalFigures - getSessionTotals(state.sessions)
+        state.totalFigures - getTotalSelectedSessions(state.sessions)
     },
     decrementSessionAmount: (state, action) => {
       const { type, index } = action.payload
@@ -114,7 +157,7 @@ export const FigureReducer = createSlice({
       }
 
       state.remainingFigures =
-        state.totalFigures - getSessionTotals(state.sessions)
+        state.totalFigures - getTotalSelectedSessions(state.sessions)
     },
   },
 })

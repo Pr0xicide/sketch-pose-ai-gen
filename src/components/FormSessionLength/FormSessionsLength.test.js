@@ -2,7 +2,7 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 
 import { render } from '../../_tests/testing-utils'
-import { SessionLength } from './SessionLength'
+import { FormSessionLength } from './FormSessionLength'
 
 const MILLISECONDS = 1000
 const MINUTES = MILLISECONDS * 60
@@ -58,13 +58,13 @@ const preloadedState = {
 
 describe('components exists', () => {
   test('correct session length title', () => {
-    render(<SessionLength type="short" />, { preloadedState })
+    render(<FormSessionLength type="short" />, { preloadedState })
     const heading = screen.getByRole('heading', { name: /short/i }).innerHTML
     expect(heading).toBe('Short Length Sessions')
   })
 
   test('session total amount exists', () => {
-    render(<SessionLength type="short" />, { preloadedState })
+    render(<FormSessionLength type="short" />, { preloadedState })
     const element = screen.getByTestId('total-short-sessions')
     expect(element).toBeInTheDocument()
   })
@@ -72,7 +72,7 @@ describe('components exists', () => {
 
 describe('initial state', () => {
   test('correct session total amount is printed', () => {
-    render(<SessionLength type="short" />, { preloadedState })
+    render(<FormSessionLength type="short" />, { preloadedState })
     const sessionTotal = parseInt(
       screen.getByTestId('total-short-sessions').innerHTML
     )

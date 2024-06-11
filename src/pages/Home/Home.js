@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { FormTotalFigures } from '../components/FormTotalFigures/FormTotalFigures'
-import { FormSessionPlan } from '../components/FormSessionPlan/FormSessionPlan'
-import { FormPoseType } from '../components/FormPoseType/FormPoseType'
+import { FormTotalFigures } from '../../components/FormTotalFigures/FormTotalFigures'
+import { FormSessionPlan } from '../../components/FormSessionPlan/FormSessionPlan'
+import { FormPoseType } from '../../components/FormPoseType/FormPoseType'
 
 export const FORM_STATES = {
   TOTAL_FIGURES: 0,

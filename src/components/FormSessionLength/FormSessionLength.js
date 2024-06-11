@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { SessionAmount } from '../SessionAmount/SessionAmount'
+import { FormSessionAmount } from '../FormSessionAmount/FormSessionAmount'
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -16,7 +16,7 @@ const getSessionLengthTotals = (sessions, type) => {
   return sum
 }
 
-export const SessionLength = ({ type }) => {
+export const FormSessionLength = ({ type }) => {
   const { sessions } = useSelector((state) => state.figure)
 
   return (
@@ -24,7 +24,7 @@ export const SessionLength = ({ type }) => {
       <h2>{capitalizeFirstLetter(type)} Length Sessions</h2>
       {sessions[type].map((session, i) => (
         <div id={session.id} key={session.id} className="mb-[5px]">
-          <SessionAmount index={i} type={type} session={session} />
+          <FormSessionAmount index={i} type={type} session={session} />
         </div>
       ))}
 

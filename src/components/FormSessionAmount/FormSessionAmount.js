@@ -6,7 +6,7 @@ import {
   decrementSessionAmount,
 } from '../../store/FigureReducer'
 
-export const SessionAmount = ({ session, type, index }) => {
+export const FormSessionAmount = ({ session, type, index }) => {
   const { remainingFigures } = useSelector((state) => state.figure)
   const dispatch = useDispatch()
   const sessionTime = session.duration / 1000

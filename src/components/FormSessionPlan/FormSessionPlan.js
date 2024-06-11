@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { FORM_STATES } from '../../pages/Home'
-import { SessionLength } from '../SessionLength/SessionLength'
+import { FORM_STATES } from '../../pages/Home/Home'
+import { FormSessionLength } from '../FormSessionLength/FormSessionLength'
 import { resetSession } from '../../store/FigureReducer'
 
 export const FormSessionPlan = ({ formState, updateFormState }) => {
@@ -42,9 +42,9 @@ export const FormSessionPlan = ({ formState, updateFormState }) => {
         <span data-testid="total-figures-remaining">{remainingFigures}</span>
       </section>
 
-      <SessionLength type="short" />
-      <SessionLength type="average" />
-      <SessionLength type="long" />
+      <FormSessionLength type="short" />
+      <FormSessionLength type="average" />
+      <FormSessionLength type="long" />
 
       <div></div>
 
