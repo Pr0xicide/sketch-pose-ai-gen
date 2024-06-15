@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { FORM_STATES } from '../../pages/Home/Home'
 import { FormSessionLength } from '../FormSessionLength/FormSessionLength'
-import { resetSession } from '../../store/FigureReducer'
+import { resetFigureForm } from '../../store/FigureReducer'
 
 export const FormSessionPlan = ({ formState, updateFormState }) => {
   const { totalFigures, remainingFigures } = useSelector(
@@ -14,7 +14,7 @@ export const FormSessionPlan = ({ formState, updateFormState }) => {
   const onBackClicked = (e) => {
     e.preventDefault()
     document.getElementById('form-sessions').reset()
-    dispatch(resetSession())
+    dispatch(resetFigureForm())
     updateFormState(FORM_STATES.TOTAL_FIGURES)
   }
 

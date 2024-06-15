@@ -17,7 +17,7 @@ export const Session = () => {
     if (photos.length === 0) {
       return
     } else if (activePhoto + 1 === photos.length) {
-      navigate('/session/end')
+      navigate('/session/recap')
     } else {
       const nextPhoto = activePhoto + 1
       setActivePhoto(nextPhoto)

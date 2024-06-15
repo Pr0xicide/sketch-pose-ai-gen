@@ -41,10 +41,13 @@ export const SessionReducer = createSlice({
         }
       }
     },
+    resetSession: (state, action) => {
+      state.photos.splice(0, state.photos.length)
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setSession } = SessionReducer.actions
+export const { setSession, resetSession } = SessionReducer.actions
 
 export default SessionReducer.reducer

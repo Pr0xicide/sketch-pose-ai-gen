@@ -118,7 +118,7 @@ export const FigureReducer = createSlice({
       state.totalFigures = action.payload
       state.remainingFigures = action.payload
     },
-    resetSession: (state, action) => {
+    resetFigureForm: (state, action) => {
       state.totalFigures = 0
       state.remainingFigures = 0
 
@@ -165,7 +165,7 @@ export const FigureReducer = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   setTotalFigures,
-  resetSession,
+  resetFigureForm,
   incrementSessionAmount,
   decrementSessionAmount,
 } = FigureReducer.actions
