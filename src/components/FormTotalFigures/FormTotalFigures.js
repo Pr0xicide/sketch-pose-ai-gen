@@ -7,7 +7,7 @@ import { setTotalFigures } from '../../store/FigureReducer'
 
 const NUM_FIGURE_OPTIONS = [6, 9, 12]
 
-if (process.env.NODE_ENV === 'development') NUM_FIGURE_OPTIONS.splice(0, 0, 1)
+if (process.env.NODE_ENV === 'development') NUM_FIGURE_OPTIONS.push(1, 2, 3)
 
 export const FormTotalFigures = ({ formState, updateFormState }) => {
   const dispatch = useDispatch()
