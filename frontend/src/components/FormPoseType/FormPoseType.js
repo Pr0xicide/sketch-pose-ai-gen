@@ -1,10 +1,13 @@
 import React from 'react'
+import axios from 'axios'
+
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { FORM_STATES } from '../../pages/Home/Home'
 import { useDispatch, useSelector } from 'react-redux'
-import { setPoseType, setPhotos, setSession } from '../../store/SessionReducer'
+import { setSession } from '../../store/SessionReducer'
+import { getSessionPlan } from '../../store/FigureReducer'
 
 export const POSES_PROMPTS = [
   {
@@ -47,15 +50,25 @@ export const FormPoseType = ({ formState, updateFormState }) => {
     updateFormState(FORM_STATES.SESSION_PLAN)
   }
 
-  const onFormSubmit = (data) => {
+  const onFormSubmit = async (data) => {
     const { pose } = data
-    dispatch(
-      setSession({
-        pose: POSES_PROMPTS[pose],
-        sessions: sessions,
-      })
+
+    // API call to create a session.
+    const res = await axios.post(
+      `${process.env.REACT_APP_BACKEND_HOST}/session/create`,
+      {
+        pose: POSES_PROMPTS[pose].name,
+        sessionDurations: getSessionPlan(sessions),
+        env: process.env.NODE_ENV,
+      }
     )
-    navigate('/session')
+
+    // If successful, proceed to start session..
+    if (res.data.success) {
+      const { data } = res.data
+      dispatch(setSession(data))
+      navigate('/session')
+    }
   }
 
   return (

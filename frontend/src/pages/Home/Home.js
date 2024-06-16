@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FormTotalFigures } from '../../components/FormTotalFigures/FormTotalFigures'
 import { FormSessionPlan } from '../../components/FormSessionPlan/FormSessionPlan'
 import { FormPoseType } from '../../components/FormPoseType/FormPoseType'

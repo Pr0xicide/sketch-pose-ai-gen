@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { SessionPhoto } from '../../components/SessionPhoto/SessionPhoto'
 import { SessionBlank } from '../../components/SessionBlank/SessionBlank'
 
 export const Session = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
-  const { totalFigures } = useSelector((state) => state.figure)
   const { photos } = useSelector((state) => state.session)
   const [activePhoto, setActivePhoto] = useState(0)
 

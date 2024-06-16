@@ -26,11 +26,11 @@ export const SessionRecap = () => {
       <ul>
         {photos.map((photo, index) => (
           <li key={index}>
+            <p>Session Photo: {index + 1}</p>
             <img src={photo.url} width={150} alt="" />
             <p>
-              Download:{' '}
-              <a href={photo.url} download>
-                Session Photo {index + 1}
+              <a href={photo.url} download target="blank">
+                Download
               </a>
             </p>
           </li>
