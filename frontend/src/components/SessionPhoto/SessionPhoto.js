@@ -43,8 +43,7 @@ export const SessionPhoto = ({ active, time, url, loadNextPhoto }) => {
       <p
         className={process.env.NODE_ENV === 'development' ? 'block' : 'hidden'}
       >
-        Time remaining: {timeRemaining} <br />
-        Active: {String(active)}
+        Time remaining: {timeRemaining}
       </p>
 
       <img className="block" src={url} alt="" />

@@ -13,7 +13,7 @@ export const Home = () => {
   const [formState, setFormState] = useState(FORM_STATES.TOTAL_FIGURES)
 
   return (
-    <section>
+    <section className="max-w-3xl mx-auto">
       <FormTotalFigures formState={formState} updateFormState={setFormState} />
       <FormSessionPlan formState={formState} updateFormState={setFormState} />
       <FormPoseType formState={formState} updateFormState={setFormState} />

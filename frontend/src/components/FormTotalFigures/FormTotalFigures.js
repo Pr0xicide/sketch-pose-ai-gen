@@ -29,21 +29,27 @@ export const FormTotalFigures = ({ formState, updateFormState }) => {
       className={formState === FORM_STATES.TOTAL_FIGURES ? '' : 'hidden'}
       onSubmit={handleSubmit(onNumberSubmit)}
     >
-      <h2>Number of Figures</h2>
+      <h2 className="font-thin text-4xl text-[#66fcf1]">
+        Step 1: Number of Figures
+      </h2>
+      <p>Number of figures that will appear in a session.</p>
 
-      <fieldset>
+      <fieldset className="mt-[10px]">
         {NUM_FIGURE_OPTIONS.map((option) => (
-          <div key={`figure-num-${option}}`}>
+          <div className="col-span-4 my-4" key={`figure-num-${option}}`}>
             <input
               type="radio"
               id={`figure-num-${option}}`}
               name="figure-num"
               defaultValue={option}
               {...register('figure-num', { required: true })}
+              className=""
               data-testid="form-figure-option"
             />
 
-            <label htmlFor={`figure-num-${option}}`}>{option}</label>
+            <label className="pl-[5px]" htmlFor={`figure-num-${option}}`}>
+              <span>{option}</span>
+            </label>
           </div>
         ))}
 

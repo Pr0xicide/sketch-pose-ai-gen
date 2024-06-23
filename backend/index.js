@@ -10,9 +10,9 @@ app.use(
   })
 )
 
+app.use('/test-images', express.static('test-images'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
 app.use('/session', require('./routes/session'))
 
 app.listen(PORT, () => {
